@@ -78,7 +78,7 @@ const ServiceDetailPage = () => {
 
   return (
     <div>
-      {serviceDetails ? (
+      {!serviceStore.loading ? (
         <>
           <ListWrapper>
             {serviceDetails.length > 0 ? (
