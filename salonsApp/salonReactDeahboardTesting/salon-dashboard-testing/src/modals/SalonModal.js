@@ -25,7 +25,7 @@ const customStyles = {
   },
 };
 
-const SalonModal = ({ oldSalon, modalStatus, isOpen, closeModal }) => {
+const SalonModal = ({ oldSalon, isOpen, closeModal }) => {
   // const { storeId } = useParams();
 
   const [salon, setSalon] = useState(
@@ -58,7 +58,6 @@ const SalonModal = ({ oldSalon, modalStatus, isOpen, closeModal }) => {
     <>
       {isOpen ? (
         <Modal
-          modalStatus={modalStatus}
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={customStyles}

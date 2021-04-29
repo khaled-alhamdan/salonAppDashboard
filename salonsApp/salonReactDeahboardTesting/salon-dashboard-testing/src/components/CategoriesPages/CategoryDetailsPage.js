@@ -9,14 +9,12 @@ import { observer } from "mobx-react";
 import { useParams } from "react-router-dom";
 // Importing buttons
 import AddButton from "../Buttons/AddButton";
-// Importing service modal component
-import ServiceModal from "../../modals/ServiceModal";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
 import ServiceList from "../Services/ServiceList";
 
-const CategoryDetailsPage = ({ modalStatus, isOpen, closeModal }) => {
+const CategoryDetailsPage = () => {
   const { categoryId } = useParams();
 
   return (
@@ -24,13 +22,7 @@ const CategoryDetailsPage = ({ modalStatus, isOpen, closeModal }) => {
       {!categoryStore.loading ? (
         <>
           <ServiceList salonId={salonAuth.salon.id} />
-          <ServiceModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            categoryId={categoryId}
-          />
-          <AddButton modalStatus={modalStatus} />
+          <AddButton cDcategoryId={categoryId} />
         </>
       ) : (
         <Loading />

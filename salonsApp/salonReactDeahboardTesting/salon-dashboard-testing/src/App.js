@@ -61,12 +61,6 @@ const App = () => {
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const modalStatus = () => {
-    setIsOpen(!isOpen);
-  };
-  const closeModal = () => setIsOpen(false);
   // const salonLists = salonAuth.salons.find(
   //   (salon) => salon.id === salonAuth.salon.id
   // );
@@ -83,41 +77,25 @@ const App = () => {
             <SigninPage />
           </Route>
           <Route path="/home/:username" exact>
-            <HomePage
-              modalStatus={modalStatus}
-              closeModal={closeModal}
-              isOpen={isOpen}
-            />
+            <HomePage />
           </Route>
           <Route path="/home" exact>
             <Redirect to="/home/:username" exact />
           </Route>
           <Route path="/categories/:categoryId" exact>
-            <CategoryDetailsPage
-              modalStatus={modalStatus}
-              closeModal={closeModal}
-              isOpen={isOpen}
-            />
+            <CategoryDetailsPage />
           </Route>
           <Route path="/categories/:categoryId/:serviceId" exact>
             <ServiceDetailPage />
           </Route>
           <Route path="/categories" exact>
-            <CategoriesPage
-              modalStatus={modalStatus}
-              closeModal={closeModal}
-              isOpen={isOpen}
-            />
+            <CategoriesPage />
           </Route>
           <Route path="/specialists/:specialistId" exact>
             <SpecialistDetailsPage />
           </Route>
           <Route path="/specialists" exact>
-            <SpecialistsPage
-              modalStatus={modalStatus}
-              closeModal={closeModal}
-              isOpen={isOpen}
-            />
+            <SpecialistsPage />
           </Route>
         </Switch>
         <ThemeButtonDiv>

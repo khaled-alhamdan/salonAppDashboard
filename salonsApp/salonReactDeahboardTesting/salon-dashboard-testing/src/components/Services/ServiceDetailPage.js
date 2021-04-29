@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 // Importing observer
 import { observer } from "mobx-react";
-// Importing salonAuth
-import salonAuth from "../../stores/salonAuth";
 // Importing serviceStore
 import serviceStore from "../../stores/serviceStore";
 // Importing useParams
@@ -24,22 +22,14 @@ import {
 } from "../../styles";
 // Importing buttons
 import AddButton from "../Buttons/AddButton";
-// Importing ServiceSpecialistModal component
-import ServiceSpecialistModal from "../../modals/ServiceSpecialistModal";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
 const ServiceDetailPage = () => {
   const { categoryId } = useParams();
   const { serviceId } = useParams();
-  const [isOpen, setIsOpen] = useState(false);
 
   if (serviceStore.loading) return <loading />;
-
-  const modalStatus = () => {
-    setIsOpen(!isOpen);
-  };
-  const closeModal = () => setIsOpen(false);
 
   const foundService = serviceStore.services.find(
     (service) => service.id === +serviceId
@@ -95,14 +85,7 @@ const ServiceDetailPage = () => {
               </h3>
             )}
           </ListWrapper>
-          <ServiceSpecialistModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            categoryId={categoryId}
-            serviceId={serviceId}
-          />
-          <AddButton modalStatus={modalStatus} />
+          <AddButton categoryId={categoryId} serviceId={serviceId} />
         </>
       ) : (
         <Loading />

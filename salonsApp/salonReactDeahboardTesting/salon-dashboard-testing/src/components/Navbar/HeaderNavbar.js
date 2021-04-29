@@ -37,7 +37,6 @@ const Header = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 1000px;
 
   @media (min-width: 760px) {
     justify-content: space-between;

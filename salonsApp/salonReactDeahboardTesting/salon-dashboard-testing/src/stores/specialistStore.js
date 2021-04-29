@@ -22,10 +22,12 @@ class SpecialistStore {
 
   createSpecialistForSalon = async (newSpecialist) => {
     try {
+      this.loading = true;
       const formData = new FormData();
       for (const key in newSpecialist) formData.append(key, newSpecialist[key]);
       const res = await instance.post(`/specialists`, formData);
       this.specialists.push(res.data);
+      this.loading = false;
     } catch (error) {
       console.log(error);
     }

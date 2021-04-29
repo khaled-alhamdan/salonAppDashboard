@@ -55,7 +55,7 @@ const SigninPage = () => {
             <LoginInput
               type="text"
               required
-              placeholder="Enter username"
+              placeholder="Enter salon name"
               name="username"
               onChange={handleChange}
             />

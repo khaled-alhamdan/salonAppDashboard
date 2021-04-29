@@ -22,13 +22,7 @@ const customStyles = {
   },
 };
 
-const ServiceModal = ({
-  oldService,
-  modalStatus,
-  isOpen,
-  closeModal,
-  categoryId,
-}) => {
+const ServiceModal = ({ oldService, isOpen, closeModal, categoryId }) => {
   const [service, setService] = useState(
     oldService ?? {
       name: "",
@@ -48,7 +42,6 @@ const ServiceModal = ({
   };
 
   const handleSubmit = (event) => {
-    // console.log("event", event);
     event.preventDefault();
     oldService
       ? serviceStore.updateService(service)
@@ -61,7 +54,6 @@ const ServiceModal = ({
     <>
       {isOpen ? (
         <Modal
-          modalStatus={modalStatus}
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={customStyles}

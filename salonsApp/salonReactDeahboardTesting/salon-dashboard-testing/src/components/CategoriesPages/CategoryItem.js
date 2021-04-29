@@ -19,7 +19,7 @@ import {
   DeleteButton,
 } from "../../styles";
 
-const CategoryItem = ({ category, oldCategory, modalStatus }) => {
+const CategoryItem = ({ category }) => {
   const handleSubmit = (event) => {
     event.preventDefault(); // prevent refreshing the page
     categoryStore.deleteCategory(category.id);
@@ -41,7 +41,7 @@ const CategoryItem = ({ category, oldCategory, modalStatus }) => {
             </StyledLink>
           </MoreInfoButtonDiv>
           <ButtonsDiv>
-            <UpdateButton oldCategory={oldCategory} modalStatus={modalStatus} />
+            <UpdateButton category={category} />
             <DeleteButton onClick={handleSubmit}> Delete </DeleteButton>
           </ButtonsDiv>
         </ButtonsWrapper>

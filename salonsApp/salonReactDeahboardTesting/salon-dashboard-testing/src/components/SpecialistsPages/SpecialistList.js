@@ -12,7 +12,7 @@ import { ListWrapper, ListDiv } from "../../styles";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
-const SpecialistList = ({ salonId, modalStatus }) => {
+const SpecialistList = ({ salonId }) => {
   const [search, setSearch] = useState("");
   if (specialistStore.loading) return <Loading />;
 
@@ -22,11 +22,7 @@ const SpecialistList = ({ salonId, modalStatus }) => {
       specialist.username.toLowerCase().includes(search.toLowerCase())
     )
     .map((specialist) => (
-      <SpecialistItem
-        key={specialist.id}
-        specialist={specialist}
-        modalStatus={modalStatus}
-      />
+      <SpecialistItem key={specialist.id} specialist={specialist} />
     ));
 
   return (

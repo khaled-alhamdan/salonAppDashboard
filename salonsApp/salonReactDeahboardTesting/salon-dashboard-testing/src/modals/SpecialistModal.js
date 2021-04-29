@@ -10,6 +10,7 @@ import {
   ModalInputDiv,
   ModalLabels,
   ClosingModalX,
+  ModalOption,
 } from "../styles";
 
 const customStyles = {
@@ -25,12 +26,7 @@ const customStyles = {
   },
 };
 
-const SpecialistModal = ({
-  oldSpecialist,
-  modalStatus,
-  isOpen,
-  closeModal,
-}) => {
+const SpecialistModal = ({ oldSpecialist, isOpen, closeModal }) => {
   // const { storeId } = useParams();
 
   const [specialist, setSpecialist] = useState(
@@ -66,7 +62,6 @@ const SpecialistModal = ({
     <>
       {isOpen ? (
         <Modal
-          modalStatus={modalStatus}
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={customStyles}
@@ -128,11 +123,12 @@ const SpecialistModal = ({
                 <ModalLabels> Phone :</ModalLabels>
                 <ModalInputDiv>
                   <ModalInput
-                    type="number"
+                    type="text"
                     placeholder="Enter specialist phone number"
                     name="phone"
                     value={specialist.phone}
                     onChange={handleChange}
+                    // inputMode="numeric"
                   />
                 </ModalInputDiv>
               </div>
@@ -148,18 +144,34 @@ const SpecialistModal = ({
                   />
                 </ModalInputDiv>
               </div>
+
               <div>
                 <ModalLabels> Gender :</ModalLabels>
                 <ModalInputDiv>
-                  <ModalInput
-                    type="text"
-                    placeholder="Select gender"
-                    name="gender"
-                    value={specialist.gender}
-                    onChange={handleChange}
-                  />
+                  <select onChange={handleChange} name="gender">
+                    <ModalOption selected value>
+                      {``}
+                    </ModalOption>
+                    <ModalOption value={"male"}>Male</ModalOption>
+                    <ModalOption value={"female"}>Feale</ModalOption>
+                  </select>
                 </ModalInputDiv>
               </div>
+
+              {/* <ModalInputDiv>
+                  <select onChange={handleChange} name="gender">
+                    <ModalOption selected value>
+                      {``}
+                    </ModalOption>
+                      <ModalOption value={"male"}>
+                        Male
+                      </ModalOption>
+                      <ModalOption value={"female"}>
+                        Feale
+                      </ModalOption>
+                  </select>
+                </ModalInputDiv> */}
+
               <div>
                 <ModalLabels> Image :</ModalLabels>
                 <ModalInputDiv>

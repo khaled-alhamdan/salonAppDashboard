@@ -22,10 +22,11 @@ const customStyles = {
   },
 };
 
-const CategoryModal = ({ oldCategory, modalStatus, isOpen, closeModal }) => {
+const CategoryModal = ({ oldCategory, isOpen, closeModal }) => {
   const [category, setCategory] = useState(
     oldCategory ?? {
       name: "",
+      image: "",
     }
   );
 
@@ -51,7 +52,6 @@ const CategoryModal = ({ oldCategory, modalStatus, isOpen, closeModal }) => {
     <>
       {isOpen ? (
         <Modal
-          modalStatus={modalStatus}
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={customStyles}
@@ -69,6 +69,18 @@ const CategoryModal = ({ oldCategory, modalStatus, isOpen, closeModal }) => {
                     placeholder="Enter category Name"
                     name="name"
                     value={category.name}
+                    onChange={handleChange}
+                  />
+                </ModalInputDiv>
+              </div>
+              <div>
+                <ModalLabels>Image :</ModalLabels>
+                <ModalInputDiv>
+                  <ModalInput
+                    type="file"
+                    placeholder="Enter category Image"
+                    name="image"
+                    // value={category.image}
                     onChange={handleChange}
                   />
                 </ModalInputDiv>

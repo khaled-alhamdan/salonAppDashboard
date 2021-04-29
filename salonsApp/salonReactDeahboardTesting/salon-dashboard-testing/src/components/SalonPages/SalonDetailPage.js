@@ -3,8 +3,6 @@ import salonAuth from "../../stores/salonAuth";
 import { observer } from "mobx-react";
 // Importing buttons
 import UpdateButton from "../Buttons/UpdateButton";
-// Importing salon modal component
-import SalonModal from "../../modals/SalonModal";
 // Importing Loading
 import Loading from "../Loading/Loading";
 // Importing from styles
@@ -21,7 +19,7 @@ import {
   InfoStyle,
 } from "../../styles";
 
-const SalonDetailPage = ({ modalStatus, isOpen, closeModal }) => {
+const SalonDetailPage = () => {
   return (
     <div>
       {!salonAuth.loading ? (
@@ -38,11 +36,8 @@ const SalonDetailPage = ({ modalStatus, isOpen, closeModal }) => {
                   <SalonImage />
                 )}
                 <IconsWrapper>
-                  <button> Setting </button>
-                  <UpdateButton
-                    oldSalon={salonAuth.salon}
-                    modalStatus={modalStatus}
-                  />
+                  {/* <button> Setting </button> */}
+                  <UpdateButton salon={salonAuth.salon} />
                 </IconsWrapper>
               </ImageAndIconsWrapper>
               <InfoWrapper>
@@ -97,12 +92,6 @@ const SalonDetailPage = ({ modalStatus, isOpen, closeModal }) => {
               </InfoWrapper>
             </ProfileContainer>
           </ProfileWrapper>
-          <SalonModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            oldSalon={salonAuth.salon}
-          />
         </>
       ) : (
         <Loading />

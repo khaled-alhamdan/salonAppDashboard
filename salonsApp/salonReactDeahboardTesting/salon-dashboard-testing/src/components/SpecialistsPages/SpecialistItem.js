@@ -17,9 +17,7 @@ import {
   DeleteButton,
 } from "../../styles";
 
-const SpecialistItem = (props) => {
-  const specialist = props.specialist;
-
+const SpecialistItem = ({ specialist }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     specialistStore.deleteSpecialist(specialist.id);

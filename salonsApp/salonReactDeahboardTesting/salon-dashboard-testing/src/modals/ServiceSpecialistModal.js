@@ -32,7 +32,6 @@ const customStyles = {
 };
 
 const ServiceSpecialistModal = ({
-  modalStatus,
   isOpen,
   closeModal,
   serviceId,
@@ -66,7 +65,6 @@ const ServiceSpecialistModal = ({
     <>
       {isOpen ? (
         <Modal
-          modalStatus={modalStatus}
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={customStyles}

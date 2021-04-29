@@ -68,8 +68,11 @@ class SalonAuth {
       const formData = new FormData();
       for (const key in updateSalon) formData.append(key, updateSalon[key]);
       await instance.put(`/salons/${updateSalon.id}`, formData);
-      const asalon = this.salon.find((asalon) => asalon.id === updateSalon.id);
+      const asalon = this.salons.find((asalon) => asalon.id === updateSalon.id);
       for (const key in asalon) asalon[key] = updateSalon[key];
+      for (const key in this.salon) this.salon[key] = updateSalon[key];
+      console.log("asalon", asalon);
+      console.log("this.salon", this.salon);
       this.loading = false;
     } catch (error) {
       console.log(error);

@@ -42,7 +42,7 @@ class ServiceStore {
       for (const key in updateService) formData.append(key, updateService[key]);
       await instance.put(`/services/${updateService.id}`, formData);
       const service = this.services.find(
-        (service) => service.id === updateService.id
+        (service) => service.id === +updateService.id
       );
       for (const key in service) service[key] = updateService[key];
       this.loading = false;
