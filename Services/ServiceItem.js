@@ -21,9 +21,9 @@ import {
   DeleteButton,
 } from "../../styles";
 
-const ServiceItem = (props, { modalStatus }) => {
+const ServiceItem = ({ service }) => {
   const { categoryId } = useParams();
-  const service = props.service;
+  // const service = props.service;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ const ServiceItem = (props, { modalStatus }) => {
             </StyledLink>
           </MoreInfoButtonDiv>
           <ButtonsDiv>
-            <UpdateButton oldService={service} modalStatus={modalStatus} />
+            <UpdateButton service={service} />
             <DeleteButton onClick={handleSubmit}> Delete </DeleteButton>
           </ButtonsDiv>
         </ButtonsWrapper>

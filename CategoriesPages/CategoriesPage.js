@@ -3,8 +3,6 @@ import React from "react";
 import salonAuth from "../../stores/salonAuth";
 // Importing categoryStore
 import categoryStore from "../../stores/categoryStore";
-// Importing category modal component
-import CategoryModal from "../../modals/CategoryModal";
 // Importing observer
 import { observer } from "mobx-react";
 // Imporing category list
@@ -14,23 +12,13 @@ import AddButton from "../Buttons/AddButton";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
-const CategoriesPage = ({ modalStatus, isOpen, closeModal, category }) => {
+const CategoriesPage = () => {
   return (
     <div>
       {!categoryStore.loading ? (
         <>
-          <CategoryList
-            salonId={salonAuth.salon.id}
-            modalStatus={modalStatus}
-            oldCategory={category}
-          />
-          <CategoryModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            oldCategory={category}
-          />
-          <AddButton modalStatus={modalStatus} />
+          <CategoryList salonId={salonAuth.salon.id} />
+          <AddButton />
         </>
       ) : (
         <Loading />

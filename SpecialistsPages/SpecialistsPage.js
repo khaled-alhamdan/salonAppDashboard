@@ -1,7 +1,6 @@
 import React from "react";
 import salonAuth from "../../stores/salonAuth";
-// Importing category modal component
-import SpecialistModal from "../../modals/SpecialistModal";
+import specialistStore from "../../stores/specialistStore";
 import { observer } from "mobx-react";
 // Imporing category list
 import SpecialistList from "./SpecialistList";
@@ -10,23 +9,13 @@ import AddButton from "../Buttons/AddButton";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
-const SpecialistsPage = ({ modalStatus, isOpen, closeModal }) => {
+const SpecialistsPage = () => {
   return (
     <div>
-      {!salonAuth.loading ? (
+      {!specialistStore.loading ? (
         <>
-          <SpecialistList
-            salonId={salonAuth.salon.id}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            isOpen={isOpen}
-          />
-          <SpecialistModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-          />
-          <AddButton modalStatus={modalStatus} />
+          <SpecialistList salonId={salonAuth.salon.id} />
+          <AddButton salonId={salonAuth.salon.id} />
         </>
       ) : (
         <Loading />

@@ -12,7 +12,7 @@ import { ListWrapper, ListDiv } from "../../styles";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
-const CategoryList = ({ salonId, modalStatus, oldCategory }) => {
+const CategoryList = ({ salonId }) => {
   const [search, setSearch] = useState("");
   if (categoryStore.loading) return <Loading />;
 
@@ -21,14 +21,7 @@ const CategoryList = ({ salonId, modalStatus, oldCategory }) => {
     .filter((category) =>
       category.name.toLowerCase().includes(search.toLowerCase())
     )
-    .map((category) => (
-      <CategoryItem
-        key={category.id}
-        category={category}
-        modalStatus={modalStatus}
-        oldCategory={oldCategory}
-      />
-    ));
+    .map((category) => <CategoryItem key={category.id} category={category} />);
 
   return (
     <ListWrapper>

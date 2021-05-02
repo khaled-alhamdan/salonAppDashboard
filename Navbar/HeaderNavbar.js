@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { StyledLink } from "../../styles";
 import Burger from "./Burger";
+// Importing Route and Switch
+// import { Redirect } from "react-router";
 
 // Importing assests
 // import AppLogoMiddle from "../../media/headerLogo.png";
@@ -37,7 +39,6 @@ const Header = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 1000px;
 
   @media (min-width: 760px) {
     justify-content: space-between;

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 // Importing observer
 import { observer } from "mobx-react";
-// Importing salonAuth
-import salonAuth from "../../stores/salonAuth";
 // Importing serviceStore
 import serviceStore from "../../stores/serviceStore";
+// Importing categoryStore
+import categoryStore from "../../stores/categoryStore";
 // Importing useParams
 import { useParams } from "react-router-dom";
 // Importing styled Link
@@ -24,26 +24,21 @@ import {
 } from "../../styles";
 // Importing buttons
 import AddButton from "../Buttons/AddButton";
-// Importing ServiceSpecialistModal component
-import ServiceSpecialistModal from "../../modals/ServiceSpecialistModal";
 // Importing Loading
 import Loading from "../Loading/Loading";
 
 const ServiceDetailPage = () => {
   const { categoryId } = useParams();
   const { serviceId } = useParams();
-  const [isOpen, setIsOpen] = useState(false);
 
+  if (categoryStore.loading) return <loading />;
   if (serviceStore.loading) return <loading />;
-
-  const modalStatus = () => {
-    setIsOpen(!isOpen);
-  };
-  const closeModal = () => setIsOpen(false);
 
   const foundService = serviceStore.services.find(
     (service) => service.id === +serviceId
   );
+
+  // console.log(foundService);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -95,14 +90,7 @@ const ServiceDetailPage = () => {
               </h3>
             )}
           </ListWrapper>
-          <ServiceSpecialistModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            categoryId={categoryId}
-            serviceId={serviceId}
-          />
-          <AddButton modalStatus={modalStatus} />
+          <AddButton categoryId={categoryId} serviceId={serviceId} />
         </>
       ) : (
         <Loading />

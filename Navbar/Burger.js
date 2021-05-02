@@ -33,7 +33,6 @@ const Burger = () => {
       <div
         style={{
           display: "flex",
-          position: "absolute",
           top: "0px",
           right: "0px",
         }}

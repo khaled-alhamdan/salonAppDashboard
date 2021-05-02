@@ -17,13 +17,11 @@ import {
   DeleteButton,
 } from "../../styles";
 
-const SpecialistItem = (props) => {
-  const specialist = props.specialist;
-
+const SpecialistItem = ({ specialist }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     specialistStore.deleteSpecialist(specialist.id);
-    alert("Specialist account has been deleted");
+    // alert("Specialist account has been deleted");
   };
 
   return (

@@ -3,8 +3,6 @@ import salonAuth from "../../stores/salonAuth";
 import { observer } from "mobx-react";
 // Importing buttons
 import UpdateButton from "../Buttons/UpdateButton";
-// Importing salon modal component
-import SalonModal from "../../modals/SalonModal";
 // Importing Loading
 import Loading from "../Loading/Loading";
 // Importing from styles
@@ -16,12 +14,12 @@ import {
   IconsWrapper,
   InfoWrapper,
   InfoContainer,
-  TextContainer,
-  TitleStyle,
-  InfoStyle,
+  ProfileFeildTitle,
+  ProfileInputFeildDiv,
+  ProfileInputFeildValue,
 } from "../../styles";
 
-const SalonDetailPage = ({ modalStatus, isOpen, closeModal }) => {
+const SalonDetailPage = () => {
   return (
     <div>
       {!salonAuth.loading ? (
@@ -38,71 +36,69 @@ const SalonDetailPage = ({ modalStatus, isOpen, closeModal }) => {
                   <SalonImage />
                 )}
                 <IconsWrapper>
-                  <button> Setting </button>
-                  <UpdateButton
-                    oldSalon={salonAuth.salon}
-                    modalStatus={modalStatus}
-                  />
+                  {/* <button> Setting </button> */}
+                  <UpdateButton salon={salonAuth.salon} />
                 </IconsWrapper>
               </ImageAndIconsWrapper>
               <InfoWrapper>
                 <InfoContainer>
-                  <TextContainer>
-                    <TitleStyle> Name</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.username}</InfoStyle>
-                    </div>
-                  </TextContainer>
-                  {/*  */}
+                  <div>
+                    <ProfileFeildTitle> Salon Name</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.username}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  <TextContainer>
-                    <TitleStyle>Role</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.role}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Role</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.role} manager
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Location</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.address}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Address</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.address}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Gender</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.gender}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Gender </ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.gender}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Email</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.email}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Email </ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.email}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Phone</TitleStyle>
-                    <div>
-                      <InfoStyle>{salonAuth.salon.phone}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Phone </ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {salonAuth.salon.phone}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
                 </InfoContainer>
               </InfoWrapper>
             </ProfileContainer>
           </ProfileWrapper>
-          <SalonModal
-            isOpen={isOpen}
-            modalStatus={modalStatus}
-            closeModal={closeModal}
-            oldSalon={salonAuth.salon}
-          />
         </>
       ) : (
         <Loading />

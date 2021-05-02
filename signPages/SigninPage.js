@@ -55,13 +55,13 @@ const SigninPage = () => {
             <LoginInput
               type="text"
               required
-              placeholder="Enter username"
+              placeholder="Enter salon name"
               name="username"
               onChange={handleChange}
             />
             <LoginLabel> Password </LoginLabel>
             <LoginInput
-              type="text"
+              type="password"
               required
               placeholder="Enter password"
               name="password"

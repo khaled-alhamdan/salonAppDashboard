@@ -14,10 +14,10 @@ import {
   IconsWrapper,
   InfoWrapper,
   InfoContainer,
-  TextContainer,
-  TitleStyle,
-  InfoStyle,
   DeleteButton,
+  ProfileFeildTitle,
+  ProfileInputFeildDiv,
+  ProfileInputFeildValue,
 } from "../../styles";
 // Importing useHistory
 import { useHistory } from "react-router-dom";
@@ -28,7 +28,7 @@ const SpecialistDetailsPage = () => {
   const { specialistId } = useParams();
   const history = useHistory();
 
-  if (specialistStore.loading) return <hLoading />;
+  if (specialistStore.loading) return <Loading />;
   const aSpecialists = specialistStore.specialists.find(
     (specialist) => +specialist.id === +specialistId
   );
@@ -36,7 +36,7 @@ const SpecialistDetailsPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     specialistStore.deleteSpecialist(specialistId);
-    alert("Specialist account has been deleted");
+    // alert("Specialist account has been deleted");
     history.push(`/specialists`);
   };
   return (
@@ -60,66 +60,79 @@ const SpecialistDetailsPage = () => {
               </ImageAndIconsWrapper>
               <InfoWrapper>
                 <InfoContainer>
-                  <TextContainer>
-                    <TitleStyle> First name</TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.firstName}</InfoStyle>
-                    </div>
-                  </TextContainer>
-                  {/*  */}
+                  <div>
+                    <ProfileFeildTitle> First name</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.firstName}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  <TextContainer>
-                    <TitleStyle>Last name</TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.lastName}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Last name</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.lastName}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Username </TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.username}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Username</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.username}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Gender</TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.gender}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Gender</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.gender}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Email</TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.email}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Email</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.email}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Phone</TitleStyle>
-                    <div>
-                      <InfoStyle>{aSpecialists.phone}</InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Phone</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      <ProfileInputFeildValue>
+                        {aSpecialists.phone}
+                      </ProfileInputFeildValue>
+                    </ProfileInputFeildDiv>
+                  </div>
 
-                  {/*  */}
-                  <TextContainer>
-                    <TitleStyle>Timeslots</TitleStyle>
-                    <div>
-                      <InfoStyle>
-                        {aSpecialists.timeslots ? (
-                          <>{aSpecialists.timeslots}</>
-                        ) : (
-                          <h4> Unsetted</h4>
-                        )}
-                      </InfoStyle>
-                    </div>
-                  </TextContainer>
+                  <div>
+                    <ProfileFeildTitle> Timeslots</ProfileFeildTitle>
+                    <ProfileInputFeildDiv>
+                      {aSpecialists.timeslots ? (
+                        <ProfileInputFeildValue>
+                          {aSpecialists.timeslots}
+                        </ProfileInputFeildValue>
+                      ) : (
+                        <>
+                          <ProfileInputFeildValue>
+                            10AM - 4PM
+                          </ProfileInputFeildValue>
+                          <ProfileInputFeildValue>
+                            6PM - 10PM
+                          </ProfileInputFeildValue>
+                        </>
+                      )}
+                    </ProfileInputFeildDiv>
+                  </div>
                 </InfoContainer>
               </InfoWrapper>
             </ProfileContainer>
